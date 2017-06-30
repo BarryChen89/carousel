@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>走马灯图片展示插件</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0}
+		
+		.carousel {position: relative;width:850px;height:370px;overflow:hidden;
+			/*下面这段样式仅用于美化，对走马灯没用*/
+			top:50px;left:50%;margin-left:-425px;
+			border:2px solid #000;box-shadow:5px 5px 10px #333;border-radius: 5px;background: #1d1d1d;
+		}
+		.carousel li {position: absolute;width:301px;height:370px;cursor:pointer;list-style: none;opacity: 0}
+		.carousel li img {width:100%;}
+
+		a {display: block;font-size: 14px;height:24px;line-height: 24px;border:1px solid #999;background: #ccc;text-decoration: none;text-align: center;padding:0 5px;color:#333;position: absolute;left: 50%;top:10px;}
+		.auto {margin-left: -425px;}
+	</style>
+</head>
+<body>
+
+<ul class="carousel lvl3" id="carousel">
+	<li class="carousel-item"><img src="images/pic_1.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_2.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_3.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_4.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_5.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_6.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_7.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_8.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_9.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_10.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_11.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_12.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_13.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_14.png" alt=""></li>
+	<li class="carousel-item"><img src="images/pic_15.png" alt=""></li>
+</ul>
+<a href="javascript:" class="auto">开启自动轮播</a>
+<script src="https://img1.tiancitycdn.com/project5/csol2/common/jquery-1.7.2.min.js"></script>
+<script src="js/cwqCarousel.min.js"></script>
+<script type="text/javascript">
+
+	var controller = $('#carousel').cwqCarousel({
+		level : 3, // 显示五个元素设3，7个设4 
+		scale : 0.8, // 缩放比
+		speed : 500, // 切换速度
+		autoPlay : false, // 自动播放
+		delay : 2000 // 自动播放间隔
+	});
+
+	$('.auto').click(function(){
+		if( $(this).text() == '开启自动轮播' ){
+			$(this).text('取消自动轮播');
+			controller.data('cwqCarousel').autoPlay();
+		}else {
+            $(this).text('开启自动轮播');
+            controller.data('cwqCarousel').cancelAutoPlay();
+        }
+	})
+</script>
+</body>
+</html>
